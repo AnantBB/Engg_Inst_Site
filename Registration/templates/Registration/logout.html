@@ -1,0 +1,26 @@
+{% extends "Registration/layout.html" %}
+{% block content %}
+<script>
+    function OnLoadPage() {
+        document.getElementById('action_text').value = 'logout';
+        document.getElementById('textarea5').value = localStorage.getItem('user');
+        document.getElementById("textarea1").value = localStorage.getItem('txt1');
+        document.getElementById("textarea2").value = localStorage.getItem('txt2');
+        document.getElementById("textarea3").value = localStorage.getItem('txt3');
+        document.getElementById("textarea4").value = localStorage.getItem('txt4');        
+    }       
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="OnLoadPage()">
+    
+</body>
+</html>
+
+
+{% endblock %}

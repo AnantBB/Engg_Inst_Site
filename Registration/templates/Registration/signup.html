@@ -1,0 +1,46 @@
+{% extends "registration/layout.html" %}
+ 
+    {% block content %}
+        <script>
+             window.addEventListener("load", afterLoaded,false);
+             function afterLoaded(){
+                document.getElementById("id_first_name").value = localStorage.getItem('txt1');
+                document.getElementById("id_last_name").value = localStorage.getItem('txt2');
+            }
+        </script>
+        <form method="POST"  action="/user">
+            {% csrf_token %}
+            <div class="container">
+                <table class="table table-bordered" style="border: 2px solid blue;">
+                    <h4 >{{role_info.dept_token}} login</h4>
+                    <tr>
+                         <td class="td1">{{form.fname.label_tag}}</td>
+                         <td class="td2">{{form.fname}}</td>            
+                    </tr>
+                    <tr>
+                        <td class="td1">{{form.lname.label_tag}}</td>
+                         <td class="td2">{{form.lname}}</td> 
+                    </tr>
+                    <tr>
+                        <td class="td1">{{form.email.label_tag}}</td>
+                        <td class="td2">{{form.email}}</td> 
+                    
+                    </tr>
+                    <tr>
+                        <td class="td1">{{auth_form.username.label_tag}}</td>
+                        <td class="td2">{{auth_form.username}}</td>             
+                    </tr>
+                    <tr>
+                        <td class="td1">{{auth_form.password1.label_tag}}</td>
+                        <td class="td2">{{auth_form.password1}}</td>   
+                    </tr> 
+                    <tr>
+                        <td class="td1">{{auth_form.password2.label_tag}}</td>
+                        <td class="td2">{{auth_form.password2}}</td>               
+                    </tr>
+                </table>
+                </div>
+            <input type="submit" class="mybutton" href="{% url 'Registration:create_user' %}" onclick="loggedIn()" 
+            style="padding-top:5px; margin-right:50px; height:40px; width:120px; float: right;" value="signup">
+        </form>        
+    {% endblock %}

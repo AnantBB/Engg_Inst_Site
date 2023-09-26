@@ -1,0 +1,18 @@
+.mytextarea {
+    height: 36px;
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;    
+}
+
+.mybutton {
+    background-color:blue; 
+    width:200px; color:white; 
+    border-radius: 8px;
+    font-size:17px;   
+    padding:13px 13px 13px 13px; 
+    font-family: 'Arial, Helvetica, sans-serif';
+}

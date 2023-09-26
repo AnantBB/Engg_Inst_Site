@@ -1,0 +1,2005 @@
+    {% load static %}
+    <h2 style="color: darkblue; margin-left: 3%;">Description on how this project is created</h2>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; "> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Initially one folder is created in
+        which we are expecting to store all files and folders of Django project. By using command-prompt this 
+        newly created folder is accessed. Initially by typing python at command-prompt python is checked to be 
+        present on selected drive. Another way is to type <em style="color: blue;">python --version </em> so 
+        version of python is displayed on command-prompt. Afterwords we have to create virtual envioronment 
+        so that all installations resides in the virtual environment so created. The command-prompt to create 
+        virtual envioronment is <em style="color: blue;">virtualenv venv</em>. The folder venv is created 
+        inside the folder at which command is running. To activate the virtual environment use 
+        <em style="color: blue;">venv\Scripts\activate</em>. Now to check the django version present we have to 
+        execute <em style="color: blue;">django-admin --version</em>    
+    </p>    
+    <h2 style="color: darkblue; margin-left: 3%;">Django project creation</h2>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we will use the command <em style="color: blue;">
+        django-admin startproject Engg_Inst_Site</em> to start new project. Generally one or more applications 
+        are created inside the project, for creating application we have to go inside the the folder Engg_Inst_Site 
+        by using <em style="color: blue;">cd Engg_Inst_Site</em>. Now we may check for django installation by using
+        <em style="color: blue;">python -m django --version</em>. If django is not present then use <em style="color: blue;">pip install django</em>
+        to install django. The name of the project to created is decided as Registration, so we have to use 
+        <em style="color: blue;">python manage.py startapp Registration</em>.Now to view the file structure created 
+        while creating django project and application we have to go one level up by using <em style="color: blue;">
+        cd..</em> so we are at root folder that we have created at the beginning. Now if we use <em style="color: blue;">
+        code .</em> command then visual code window gets open and we see all folder and file structure so created.
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then we may type in <em style="color: blue;">
+        python manage.py runserver</em> at terminal to start webserver. Once webserver is started then it is ready to 
+        listen the request at http://127.0.0.1:8000/ . So we write the http://127.0.0.1:8000/ in address bar of 
+        browser and django’s default page is displayed.
+    </p>   
+    <h2 style="color: darkblue; margin-left: 3%;">Replacing default page with home page</h2>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If we expand the Registration folder inside 
+        Check_Project then we see lot of python files, we want to add one more file to this Registration folder whose
+        name is urls.py. The file with same name is present in Engg_Inst_Site folder. Now we want to add two lines of
+        code to this urls.py at project level, one to import include function and second to include urls.py at application 
+        level.
+        <br>
+        <br>
+                              
+                                <table style="margin-left: 350px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+                                    <tr>
+                                        <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;Check_Project\Engg_Inst_Site\urls.py
+                                        </th>                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <pre >
+                                                <code>
+    from django.urls import path
+    from django.conf.urls import include
+
+        urlpatterns = [
+            path('', include('Registration.urls')),
+            path('admin/', admin.site.urls),
+            ] </code>
+                                            </pre>
+                                        </td>
+                                    </tr>
+                                </table>                                                         
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+        Now we shall be importing path and view in app level urls.py and add path function inside urlpatterns list.
+        <br>
+        <br>
+        <table style="margin-left: 380px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Check_Project\Registration\urls.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    from django.urls import path
+    from . import views
+                                
+        urlpatterns = [    
+            path('', views.home, name='home')
+    ]</code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        Finally to show page in the browser; we have to add a function named resistor in view.py file, inside this 
+        function we see one html file with its path.
+        <table style="margin-left: 300px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Check_Project\Registration\views.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    def home(request):
+        return render(request, 'Registration/layout.html')
+    ]</code>
+                    </pre>
+                </td>
+            </tr>
+        </table>                             
+    </p>
+     <h2 style="color: darkblue; margin-left: 3%;">Creating Postgresql database and default tables</h2>
+     <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        Before we continue with project creation we are planning to change one default behavior of our 
+        django project, that is instead of sqlite we will use postgrsql as our database. For this change to
+        implement we have to modify settings file, we will either replace existing database part of settings 
+        file or comment out the earlier part and add new part corresponding to database
+        <br>
+        <br>
+         <table style="margin-left: 300px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Check_Project\Engg_Inst_Site\settings.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+   DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dbtest', 
+        'USER': 'postgres',
+        'PASSWORD': 'abb123abb',
+        'HOST': 'localhost',
+        'PORT': '5432'  
+      }
+    }</code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+     </p>
+      <h2 style="color: darkblue; margin-left: 3%;">Table names and column names</h2>
+      <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        For these change to occur and to conform the database creation we have to run <em style="color: blue;">
+        python manage.py makemigrations</em> first and then we have to run <em style="color: blue;">python 
+        manage.py migrate</em>. We may conform that following tables are created in dbtest database. Names 
+        of tables and column names are shown in following table
+        <br>
+        <br>
+        <table border="solid-black">
+        <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+            <th>Column4</th>
+            <th>Column5</th>
+            <th>Column6</th>
+            <th>Column7</th>
+            <th>Column8</th>
+            <th>Column9</th>
+            <th>Column10</th>
+            <th>Column11</th>                      
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>autd_group</td>
+            <td>id</td>
+            <td>name</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>            
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>autd_group_permissions</td>
+            <td>id</td>
+            <td>group_id</td>
+            <td>permission_id</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>           
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>auth_permission</td>            
+            <td>id</td>
+            <td>name</td>
+            <td>content_type_id</td>
+            <td>codename</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>           
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>auth_user</td>
+            <td>id</td>
+            <td>password</td>
+            <td>last_login</td>
+            <td>is_superuser</td>
+            <td>username</td>
+            <td>first_name</td>
+            <td>last_name</td>
+            <td>email</td>
+            <td>is_staff</td>
+            <td>is_active</td>
+            <td>date_joined</td>           
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>auth_user_groups</td>
+            <td>id</td>
+            <td>user_id</td>
+            <td>group_id</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>            
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>auth_user_user_permissions</td>
+            <td>id</td>
+            <td>user_id</td>
+            <td>permission_id</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>            
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>django_admin_log</td>
+            <td>id</td>
+            <td>action_time</td>
+            <td>object_id</td>
+            <td>object_repr</td>
+            <td>action_flag</td>
+            <td>change_message</td>
+            <td>content_type_id</td>
+            <td>user_id</td> 
+            <td></td>
+            <td></td>
+            <td></td>           
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>django_content_type</td>
+            <td>id</td>
+            <td>app_label</td>
+            <td>model</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>           
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>django_migrations</td>
+            <td>id</td>
+            <td>app</td>
+            <td>name</td>
+            <td>applied</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>           
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>django_session</td>
+            <td>session_key</td>
+            <td>session_data</td>
+            <td>expire_date</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>           
+        </tr>        
+    </table>       
+        </p>
+         <h2 style="color: darkblue; margin-left: 3%;">Creating layout page</h2>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+     We have decided to produce a layout that contains two rows one would contain top 
+     navigation bar whose length is entire webpage and height is like small ribbon. But 
+     second row have comparatively narrow width and long height. This second row 
+     considered to contain sidebar and remaining area as blank page.
+     <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>                            
+            &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" 
+            rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" 
+            crossorigin="anonymous"&gt;       
+            &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" 
+            crossorigin="anonymous"&gt;&lt;/script&gt;
+            &lt;div class="row" &gt;
+                &lt;nav class="navbar navbar-expand-lg" style="background-color: blue;"&gt;
+
+                &lt;/nav&gt;
+            &lt;/div&gt;
+            &lt;div class="row"&gt;
+                &lt;div class="col-sm-2" style="background-color: aqua;"&gt;
+                    &lt;ul class="accordion accordion-flush list-unstyled"&gt;
+                        &lt;li class="accordion-item border-bottom-0"&gt;
+
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;                            
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+    Now we will add one item at a time to navigation bar and fill the navigation bar with all items. Following 
+    code shows the item that is being added at the begining.
+    <br>
+     <br>
+      <table style="margin-left: 50px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+            &lt;div class="container-fluid"&gt;
+                &lt;a class="navbar-brand" style="padding-left:25px;" href="#"&gt;
+                    &lt;img src= "https://media.geeksforgeeks.org/auth/profile/8ceu3jpotjla4m5wpbm7" alt="" 
+                    width="30" height="30"&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+    Now the next item that we are going to add is institute name, this item comes along with separate div item, 
+    unordered list and one list item inside it. This we may see in the following table.
+    <br>
+     <br>
+    <table style="margin-left: 120px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+            &lt;div class="collapse navbar-collapse" id="navbarSupportedContent"&gt;
+                 &lt;ul class="navbar-nav me-auto mb-2 mb-lg-0"&gt;
+                     &lt;li class="nav-item"&gt;
+                          &lt;a class="nav-link active" aria-current="page" style="color:white;  
+                          padding-left:10px; padding-right:10px;" href="/"&gt;YSPM's YTC&lt;/a&gt;
+                      &lt;/li&gt;
+                 &lt;/ul&gt;
+             &lt;/div&gt;
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+    Now we will add few list items similar to recent item, some of them are labels and rest of them are textboxes.
+    <br>
+     <br>
+    <table style="margin-left: 100px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+        &lt;li class="nav-item" style="padding-top:2px;" &gt;
+            &lt;input id="textarea1" type="text" style="width:95px" class="navbar-text mytextarea" 
+            placeholder="Academic Year" &gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+            &lt;a class="nav-link active" aria-current="page" style="color:white; padding-left:30px; 
+            padding-right:10px;" href="#"&gt;Department&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item" style="padding-top:2px;" &gt;
+            &lt;input id="textarea2" type="text" style="width:145px" class="navbar-text mytextarea" 
+            placeholder="Department Selection" &gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+            &lt;a class="nav-link active" aria-current="page" style="color:white; padding-left:30px; 
+            padding-right:10px;" href="#"&gt;Class&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item" style="padding-top:2px;" &gt;
+            &lt;input id="textarea3" type="text" style="width:125px" class="navbar-text mytextarea" 
+            placeholder="Class Selection" &gt;
+        &lt;/li&gt;
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+    Last few items are added to unordered list these items contain combo items, these are different from either
+    label or textbox item. Following table shows such items
+    <br>
+     <br>
+    <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="nav-item dropdown"&gt;
+    &lt;a class="nav-link dropdown-toggle" type="text" form="systemForm" style="color:white;
+    padding-left:40px;padding-right:10px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" 
+    aria-expanded="false"&gt;
+        Role
+    &lt;/a&gt;
+    &lt;ul class="dropdown-menu" aria-labelledby="navbarDropdown" onclick="set_button_text()"&gt;
+        &lt;li&gt;&lt;a id="item30" onclick="Person_selection('item30')" class="dropdown-item" href="#"&gt;
+        Management&lt;/a&gt;&lt;/li&gt;                    
+        &lt;li&gt;&lt;a id="item31" onclick="Person_selection('item31')" class="dropdown-item" href="#"&gt;
+        Faculty&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a id="item32" onclick="Person_selection('item32')" class="dropdown-item" href="#"&gt;
+        Staff&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a id="item33" onclick="Person_selection('item33')" class="dropdown-item" href="#"&gt;
+        Student&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a id="item34" onclick="Person_selection('item34')" class="dropdown-item" href="#"&gt;
+        Parent&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item" style="padding-top:2px;" &gt;
+        &lt;input id="textarea4" type="text" style="width:130px" class="navbar-text mytextarea" 
+        placeholder="Faculty Selection"  &gt;
+    &lt;/li&gt;
+        &lt;li class="nav-item dropdown"&gt;
+        &lt;a class="nav-link dropdown-toggle" type="text" form="systemForm" style="color:white;
+        padding-left:40px;padding-right:10px;" href="#" id="navbarDropdown" 
+        role="button" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+            User
+        &lt;/a&gt;
+        &lt;ul class="dropdown-menu" aria-labelledby="navbarDropdown" onclick="set_button_text()"&gt;
+            &lt;li&gt;&lt;a id="item40" onclick="User_status('item40')" class="dropdown-item" href="#"&gt;
+            New User&lt;/a&gt;&lt;/li&gt;                    
+            &lt;li&gt;&lt;a id="item41" onclick="User_status('item41')" class="dropdown-item" href="#"&gt;
+            Earlier User&lt;/a&gt;&lt;/li&gt;                                   
+        &lt;/ul&gt;
+    &lt;/li&gt;
+        &lt;li class="nav-item" style="padding-top:2px;" &gt;
+        &lt;input id="textarea5" type="text" style="width:120px" class="navbar-text mytextarea" 
+        placeholder="User Status"  &gt;
+    &lt;/li&gt;                           
+    &lt;li class="accordion-item border-bottom-0" style="padding-left:40px;padding-right:10px;"&gt;                   
+        &lt;input type="hidden" name="course" id="course" style="width:100px" /&gt;
+        &lt;input type="hidden" name="dept_token" id="dept_token" style="width:100px" /&gt;
+        &lt;input type="submit" href="{% url 'Registration:insert' %}" name="action_text" id="action_text" 
+        class="mybutton" value="" onclick="fresh_start()"  style="width:100px;height:38px; padding-top:5px;"  
+        /&gt;
+    &lt;/li&gt;
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+    Now we will create style sheet using master.css file. This file is placed in static folder, the 
+    static folder is at same level as template folder. Both of these folder are inside main 
+    Registration folder, similar to the requirement of template folder that is additional 
+    Registration folder is required, for static folder also such requirement exists. Therefore our 
+    master.css file resides inside inner Registration folder which is inside static folder.
+    <br>
+     <br>
+      <table style="margin-left: 300px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\static\Registration\master.css
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+            .mytextarea {
+                height: 36px;
+                width: 100px;
+                background-color: white;
+                color: black;
+                text-align: left;
+                padding-left: 10px;
+                padding-right: 20px;    
+            }
+
+            .mybutton {
+                background-color:blue; 
+                width:200px; color:white; 
+                border-radius: 8px;
+                font-size:17px;   
+                padding:13px 13px 13px 13px; 
+                font-family: 'Arial, Helvetica, sans-serif';
+            }
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+    Now we will start adding items to side bar of layout. But before adding first item let us add 
+    unordered list, this unordered list will contain all the list items that would form side bar
+    <br>
+     <br>
+      <table style="margin-left: 280px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+            &lt;ul class="accordion accordion-flush list-unstyled"&gt;
+
+            &lt;/ul&gt;
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+    Now let us add first item of side bar as shown below. This item is selection of academic year and
+    options for such selection are shown in the following items in the code.
+    <br>
+     <br>
+      <table style="margin-left: 100px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+        &lt;h2 class="accordion-header" id="flush-headingTwelve"&gt;
+            &lt;button  id="button0"  class="mybutton" type="button" data-bs-toggle=
+            "collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" 
+            aria-controls="flush-collapseFive" &gt;
+            Academic Year
+            &lt;/button&gt;
+        &lt;/h2&gt;
+        &lt;div id="flush-collapseTwelve" class="accordion-collapse collapse" aria-labelledby=
+        "flush-headingTwelve" data-bs-parent="#accordionFlushExample"&gt;
+            &lt;ul class="dropdown-body list-unstyled" style="text-align: center"&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" 
+                onmouseout="this.style.background='white'"&gt;&lt;a id="item35" onclick=
+                "year_selection('item35')" class="dropdown-item" 
+                href="#"&gt;2019-20&lt;/a&gt;&lt;/li&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" 
+                onmouseout="this.style.background='white'"&gt;&lt;a id="item36" onclick=
+                "year_selection('item36')" class="dropdown-item" 
+                href="#"&gt;2020-21&lt;/a&gt;&lt;/li&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" 
+                onmouseout="this.style.background='white'"&gt;&lt;a id="item37" onclick=
+                "year_selection('item37')" class="dropdown-item" 
+                href="#"&gt;2021-22&lt;/a&gt;&lt;/li&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" 
+                onmouseout="this.style.background='white'"&gt;&lt;a id="item38" onclick=
+                "year_selection('item38')" class="dropdown-item" 
+                href="#"&gt;2022-23&lt;/a&gt;&lt;/li&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" 
+                onmouseout="this.style.background='white'"&gt;&lt;a id="item39" onclick=
+                "year_selection('item39')" class="dropdown-item" 
+                href="#"&gt;2023-24&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;/li&gt;
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+    Now we will keep on adding one item at time to this side bar list with description such as Institution
+    with option as office, lab-assistant, library, examination or sports
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;hr style="height:2px;border-width:2;color:blue;"&gt;                
+    &lt;li class="accordion-item border-bottom-0"&gt;
+        &lt;h5  id="flush-headingOne" &gt;
+            &lt;p style="margin-left: 10px;margin-top: 0px; margin-bottom: 0px; font-size:18px;"&gt;
+            Department Selection&lt;/p&gt;
+        &lt;/h5&gt;
+    &lt;/li&gt;
+    &lt;li class="accordion-item border-bottom-0"&gt;
+        &lt;h2 class="accordion-header" id="flush-headingEleven"&gt;
+        &lt;button id="button11" onclick="branch_selection('button11')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false" 
+        aria-controls="flush-collapseFour"&gt;
+            Institution
+        &lt;/button&gt;
+        &lt;/h2&gt;
+        &lt;div id="flush-collapseEleven" class="accordion-collapse collapse" aria-labelledby="flush-headingEleven" 
+        data-bs-parent="#accordionFlushExample"&gt;
+            &lt;ul class="accordion-body list-unstyled"&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;
+                &lt;a id="item40" onclick="class_selection('item40')" class="dropdown-item" href="#"&gt;
+                Office&lt;/a&gt;&lt;/li&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"
+                &gt;&lt;a id="item41" onclick="class_selection('item41')" class="dropdown-item" href="#"&gt;
+                Lab assistant&lt;/a&gt;&lt;/li&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"
+                &gt;&lt;a id="item42" onclick="class_selection('item42')" class="dropdown-item" href="#"&gt;
+                Library&lt;/a&gt;&lt;/li&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"
+                &gt;&lt;a id="item43" onclick="class_selection('item43')" class="dropdown-item" href="#"&gt;
+                Examination&lt;/a&gt;&lt;/li&gt;
+                &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"
+                &gt;&lt;a id="item44" onclick="class_selection('item44')" class="dropdown-item" href="#"&gt;
+                Sports&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     General Science with Machanical, Electrical, Civil, Computer or E&TC as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingOne"&gt;
+        &lt;button id="button1" onclick="branch_selection('button1')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" 
+        aria-controls="flush-collapseFive" &gt;
+        General Science with Machanical, Electrical, Civil, Computer or E&TC as options
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;            
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item1" 
+        onclick="class_selection('item1')" class="dropdown-item" href="#"&gt;Machanical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item2" 
+        onclick="class_selection('item2')" class="dropdown-item" href="#"&gt;Electrical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item3" 
+        onclick="class_selection('item3')" class="dropdown-item" href="#"&gt;Civil&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item4" 
+        onclick="class_selection('item4')" class="dropdown-item" href="#"&gt;Computer&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item5" 
+        onclick="class_selection('item5')" class="dropdown-item" href="#"&gt;E&TC&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     Mechanical with Second Year, Third Year or Final Year as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingTwo"&gt;
+        &lt;button id="button2" onclick="branch_selection('button2')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" 
+        aria-controls="flush-collapseFour"&gt;
+        Mechanical
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item6" 
+        onclick="class_selection('item6')" class="dropdown-item" href="#"&gt;Second Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item7" 
+        onclick="class_selection('item7')" class="dropdown-item" href="#"&gt;Third Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item8" 
+        onclick="class_selection('item8')" class="dropdown-item" href="#"&gt;Final Year&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     Electrical with Second Year, Third Year or Final Year as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingFour"&gt;
+        &lt;button id="button3" onclick="branch_selection('button3')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" 
+        aria-controls="flush-collapseThree"&gt;
+        Electrical
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item9" 
+        onclick="class_selection('item9')" class="dropdown-item" href="#"&gt;Second Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item10" 
+        onclick="class_selection('item10')" class="dropdown-item" href="#"&gt;Third Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item11" 
+        onclick="class_selection('item11')" class="dropdown-item" href="#"&gt;Final Year&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     Civil with Second Year, Third Year or Final Year as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingFour"&gt;
+        &lt;button id="button4" onclick="branch_selection('button4')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" 
+        aria-controls="flush-collapseFour"&gt;
+        Civil
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item12" 
+        onclick="class_selection('item12')" class="dropdown-item" href="#"&gt;Second Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item13" 
+        onclick="class_selection('item13')" class="dropdown-item" href="#"&gt;Third Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item14" 
+        onclick="class_selection('item14')" class="dropdown-item" href="#"&gt;Final Year&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     Computer with Second Year, Third Year or Final Year as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingFive"&gt;
+        &lt;button id="button5" onclick="branch_selection('button5')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" 
+        aria-controls="flush-collapseFive"&gt;
+        Civil
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item15" 
+        onclick="class_selection('item15')" class="dropdown-item" href="#"&gt;Second Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item16" 
+        onclick="class_selection('item16')" class="dropdown-item" href="#"&gt;Third Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item17" 
+        onclick="class_selection('item17')" class="dropdown-item" href="#"&gt;Final Year&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     E&TC with Second Year, Third Year or Final Year as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingSix"&gt;
+        &lt;button id="button6" onclick="branch_selection('button6')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" 
+        aria-controls="flush-collapseSix"&gt;
+        Civil
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item18" 
+        onclick="class_selection('item18')" class="dropdown-item" href="#"&gt;Second Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item19" 
+        onclick="class_selection('item19')" class="dropdown-item" href="#"&gt;Third Year&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item20" 
+        onclick="class_selection('item20')" class="dropdown-item" href="#"&gt;Final Year&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     Polytechnic with Mechanical, Electrical or Civil as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingSeven"&gt;
+        &lt;button id="button7" onclick="branch_selection('button7')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" 
+        aria-controls="flush-collapseSeven"&gt;
+        Civil
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item21" 
+        onclick="class_selection('item21')" class="dropdown-item" href="#"&gt;Mechanical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item22" 
+        onclick="class_selection('item22')" class="dropdown-item" href="#"&gt;Electrical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item23" 
+        onclick="class_selection('item23')" class="dropdown-item" href="#"&gt;Civil&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     Mechanical Polytechnic with Second year or Third year as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingEight"&gt;
+        &lt;button id="button8" onclick="branch_selection('button8')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" 
+        aria-controls="flush-collapseEight"&gt;
+        Civil
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item24" 
+        onclick="class_selection('item24')" class="dropdown-item" href="#"&gt;Mechanical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item25" 
+        onclick="class_selection('item25')" class="dropdown-item" href="#"&gt;Electrical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item26" 
+        onclick="class_selection('item26')" class="dropdown-item" href="#"&gt;Civil&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     Electrical Polytechnic with Second year or Third year as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingNine"&gt;
+        &lt;button id="button9" onclick="branch_selection('button9')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" 
+        aria-controls="flush-collapseNine"&gt;
+        Civil
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item27" 
+        onclick="class_selection('item27')" class="dropdown-item" href="#"&gt;Mechanical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item28" 
+        onclick="class_selection('item28')" class="dropdown-item" href="#"&gt;Electrical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item29" 
+        onclick="class_selection('item29')" class="dropdown-item" href="#"&gt;Civil&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">
+     Civil Polytechnic with Second year or Third year as options
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\templates\Registration\layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;li class="accordion-item border-bottom-0"&gt;
+    &lt;h2 class="accordion-header" id="flush-headingTen"&gt;
+        &lt;button id="button10" onclick="branch_selection('button10')" class="mybutton" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" 
+        aria-controls="flush-collapseTen"&gt;
+        Civil
+        &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" 
+    data-bs-parent="#accordionFlushExample"&gt;
+        &lt;ul class="accordion-body list-unstyled"&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item30" 
+        onclick="class_selection('item30')" class="dropdown-item" href="#"&gt;Mechanical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item31" 
+        onclick="class_selection('item31')" class="dropdown-item" href="#"&gt;Electrical&lt;/a&gt;&lt;/li&gt;
+        &lt;li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"&gt;&lt;a id="item32" 
+        onclick="class_selection('item32')" class="dropdown-item" href="#"&gt;Civil&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;/li&gt;  
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>  
+</p>
+<h2 style="color: darkblue; margin-left: 3%;">Organizing dynamism using JavaScript code</h2>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; "> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; At this point in the site 
+        creation we expect user to select academic year by clicking on the button on side-bar labled as 
+        Academic Year. The dropdown below the buttton is list of academic years by clicking on any one of
+        the academic year that value of academic years is expected to be displayed on top navigation bar.
+        For this functinality to work the code is placed in the file named as main_layout.js. This file
+        is created in static folder and code is shown in the following table.
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\static\main_layout.js
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+          function year_selection(option_sel) {
+              document.getElementById("textarea1").value = document.getElementById(option_sel).innerHTML.trim();
+              localStorage.setItem('txt1', document.getElementById("textarea1").value);
+              check_status();
+          }
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p> 
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; "> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Similar to academic year selection, 
+        branch selection also takes place when user clicks on any one of the buttons below the department 
+        selection label. Following code is required to add text in department textbox.
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\static\main_layout.js
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+          function branch_selection(btn_id) {
+                document.getElementById("textarea2").value = document.getElementById(btn_id).innerHTML.trim();
+                localStorage.setItem('txt2', document.getElementById("textarea2").value);
+                check_status();
+            }
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+     <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; "> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The next very similar code is for 
+        class selection that adds class text to next textbox on navigation bar. Following code operates to 
+        display the text in class textbox
+    <br>
+     <br>
+      <table style="margin-left: 0px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\static\main_layout.js
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+            function class_selection(option_sel) {
+                document.getElementById("textarea3").value = document.getElementById(option_sel).innerHTML.trim();
+                localStorage.setItem('txt3', document.getElementById("textarea3").value);
+                check_status();
+            } 
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; "> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The last two textboxes on navigation 
+        bar are filled like combo box, these textboxes have label that is associated with small triangle between label
+        and textbox. On pressing this triangle user gets all options available for the textbox, user may select as per
+        his or her status. If we observe all functions corresponding to year, branch, class, role and status function
+        then we see that all these functions have check_status as a common function present. The code of this function
+        is shown in the lower portion of this table that checks all textboxes on navigation bar for they are filled with 
+        some text. If these textboxes are filled then button on extreme right becomes enabled with button text value
+        as Register
+
+    <br>
+     <br>
+      <table style="margin-left: 100px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\static\main_layout.js
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+            function Person_selection(option_sel) {
+                var dept = document.getElementById(option_sel).innerHTML.trim();
+                localStorage.setItem('txt4', dept);                
+                document.getElementById("textarea4").value = dept;
+                check_status();
+            }
+
+            function User_status(option_sel) {
+                var user = document.getElementById(option_sel).innerHTML.trim();
+                localStorage.setItem('txt5', user);                
+                document.getElementById("textarea5").value = user;
+                check_status();
+            }
+            function check_status(){
+                if (document.getElementById("textarea1").value == ''  ||
+                    document.getElementById("textarea2").value == ''  ||
+                    document.getElementById("textarea3").value == ''  ||
+                    document.getElementById("textarea4").value == ''  ||
+                    document.getElementById("textarea5").value == ''){
+                        document.getElementById('action_text').value = 'Restore' ;                   
+                    }        
+                else{
+                    document.getElementById('action_text').disabled = false ;
+                    document.getElementById('action_text').value = 'Register';
+                }
+            }
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+     <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; "> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The state of these textboxes and button
+        on right is known from and decided by values in textboxes, text on button and values corresponding to 
+        variables in local storage. When user starts using these elements all values are empty string at the 
+        beginning. As user enters values in textboxes he may need to change them so button on right gets the text 
+        restart, so from beginning of entry to end of all text values entering user will see restart as button text. 
+        But as he completes giving all value text changes to register. If user reload the page he gets the option 
+        to seek all text values in all textboxes that were entered in previous pass. So text on button is restore, on 
+        pressing the button he gets all values back. But if he wants to make fresh start button text changes to
+        refresh so all text boxes becomes blank and he may make fresh start. If user changes single or more values
+        then text changes to register. The code required to perform these operations is shown in the following 
+        table
+    <br>
+     <br>
+      <table style="margin-left: 120px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\static\main_layout.js
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    function fresh_start()
+    {
+        if (document.getElementById('action_text').value == 'Restore' ||
+            document.getElementById('action_text').value == 'Register'  )
+            {
+            document.getElementById("textarea1").value = localStorage.getItem('txt1');
+            document.getElementById("textarea2").value = localStorage.getItem('txt2');
+            document.getElementById("textarea3").value = localStorage.getItem('txt3');
+            document.getElementById("textarea4").value = localStorage.getItem('txt4');
+            document.getElementById("textarea5").value = localStorage.getItem('txt5');
+            document.getElementById('action_text').value = 'Refresh';
+            }
+        else if (document.getElementById('action_text').value == 'Refresh')
+            {
+            document.getElementById("textarea1").value = '';
+            document.getElementById("textarea2").value = '';
+            document.getElementById("textarea3").value = '';
+            document.getElementById("textarea4").value = '';
+            document.getElementById("textarea5").value = '';
+            document.getElementById('action_text').value = 'Restore';
+            }    
+    }
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; "> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now when user reaches upto this point
+        naturally he or she is expected to add the additional information and application makes it posssible by 
+        clicking on button when text appears to be 'Register'. When user clicks on Register button all the lables
+        and and corresponding textboxes are expected to be displayed inside the internal portion within navigation
+        bar and sidebar on left side. For this set of lables and textboxes which is known as form to appear we have 
+        to add some code. As shown in the following table form and input button with csrf token should be added.
+        
+    <br>
+     <br>
+    
+      <table style="margin-left: 130px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Check_Project\Engg_Inst_Site\Registration\static\main_layout.js
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;form method="POST" action="/registration" &gt;
+       
+        &lt;input  href="{{#  #}% url 'Registration:insert' %}" name="action_text" id="action_text" 
+        value="" onclick="fresh_start()" /&gt;
+
+    &lt;/form&gt;
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; " 
+    class="highlight-html+django notranslate"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now we have reached the point where we
+        may consider that on clicking on button that have text register all fields shall appear in the inner area
+        of the form. To do so we have to add <em style="color: blue;">href="{{#  #}% url 'Registration:insert' %}" 
+        </em>to submit button of the form as shown in above figure. This piece of code expects to create a 
+        function in the views.py file.The insert function is invoked since html form have send post request. 
+        
+    <br> 
+    <br>    
+      <table style="margin-left: 30px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Registration\views.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+   from .forms import person_info_form
+
+   def insert (request):
+       course = request.POST['course']
+       dept_token = request.POST['dept_token']
+       action_text = request.POST['action_text']
+       role_info = {'course':course, 'dept_token': dept_token, 'action_text': action_text} 
+       form = person_info_form()       
+       return render(request, 'Registration/data_fields.html', context={'form':form , 'role_info':role_info})
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; " 
+    class="highlight-html+django notranslate"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note the code line in the insert function
+        that assign person_info_form to form variable, for this assignment to work we have to import it from forms
+        file. This import statement is shown before the insert function. We may write this function since we have 
+        code in forms.py file as shown in the following table. Note the second line in this code that imports a model
+        person_form that in turn uses in the person_info_form class. So we have to add new class to the file model.py
+    <br>
+    <br>    
+      <table style="margin-left: 80px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Registration\forms.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    from django import forms
+    from .models import person_info
+    from django.forms import ModelForm    
+
+    class person_info_form(ModelForm):
+        class Meta:
+            model = person_info        
+            fields = ['academic_year', 'course', 'group' ,'arcadian', 'fname', 'mname', 'lname', 
+            'mother_name', 'inst_code', 'mobile', 'whatsapp', 'email']
+            QUALIFIER = (('1','Dr.'), ('2','Mr.'), ('3','Mrs.'), ('4','Miss'))
+            widgets = {
+                'arcadian': forms.Select(choices=QUALIFIER,attrs={'class': 'form-control' , 'style': 
+                'width: 190px'}),
+            }
+                       </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; " 
+    class="highlight-html+django notranslate"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The code to be added to models.py is 
+        shown in the following table. This person_info class is used by person_info_form class and this person_info_form
+        class is in turn used by insert function in views.py file. One more piece of code in insert function is
+        use of template data_fields.html we have to create this file inside Register folder residing in template 
+        folder as usual.
+    <br>
+    <br>    
+      <table style="margin-left: 180px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;Registration\models.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    class person_info(models.Model):
+        academic_year = models.CharField(max_length=8)
+        course = models.CharField(max_length=20)
+        group = models.CharField(max_length=12)
+        arcadian = models.CharField(max_length=4, default=None)
+        fname = models.CharField(max_length=12)
+        mname = models.CharField(max_length=12)
+        lname = models.CharField(max_length=15)
+        mother_name = models.CharField(max_length=12)    
+        inst_code = models.CharField(max_length=15)
+        mobile = models.CharField(max_length=12)
+        whatsapp = models.CharField(max_length=12)
+        email = models.EmailField(max_length = 30)
+    
+        def __str__(self):
+            return f"{self.fname} {self.lname} has {self.group} as a department"
+                       </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; " 
+    class="highlight-html+django notranslate"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code shows the the makeup
+        of data_fields.html file.
+    <br>
+    <br>    
+      <table style="margin-left: 180px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;templates\Registration\data_fields.html.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    {{##}% extends "Registration/layout.html" %} 
+    {{##}% block content %}   
+        {{##}% if role_info.action_text == 'Register'  %}    
+            &lt;table class="table table-bordered" style="border: 2px solid blue;"&gt;        
+                &lt;h4&gt; <em style="color: violet;">{&nbsp{ role_info.dept_token }}</em>  details&lt;/h4&gt;
+                &lt;tr&gt; 
+                &lt;td class="td1"&gt;Institute Code&lt;/td&gt;
+                &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.inst_code}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;Academic Yesr&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.academic_year}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;Course&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.course}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;Group&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.group}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;table class="table table-bordered" style="border: 2px solid blue;"&gt;
+                &lt;h4&gt; <em style="color: violet;"></em>{&nbsp{role_info.dept_token}} name details&lt;/h4&gt; 
+                &lt;tr&gt;                    
+                    &lt;td class="td1"&gt;<em style="color: violet;">{&nbsp{form.arcadian.label_tag}}</em>&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.arcadian}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;First Name&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.fname}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;Middle Name&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.mname}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;Last Name&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.lname}}</em>&lt;/td&gt;
+                &lt;/tr&gt;                
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;<em style="color: violet;">{&nbsp{form.mother_name.label_tag}}</em>&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.mother_name}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;table class="table table-bordered" style="border: 2px solid blue;"&gt; 
+                &lt;h4&gt;{&nbsp{role_info.dept_token}} contact details&lt;/h4&gt;               
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;<em style="color: violet;">{&nbsp{form.mobile.label_tag}}</em>&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.mobile}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;<em style="color: violet;">{&nbsp{form.email.label_tag}}</em>&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.email}}</em>&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="td1"&gt;<em style="color: violet;">{&nbsp{form.whatsapp.label_tag}}</em>&lt;/td&gt;
+                    &lt;td class="td2"&gt;<em style="color: violet;">{&nbsp{form.whatsapp}}</em>&lt;/td&gt;
+                &lt;/tr&gt;                
+            &lt;/table&gt;
+        {{##}% endif %}
+    {{##}% endblock %}
+                       </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p> 
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; " 
+    class="highlight-html+django notranslate"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The last change that we need to do is 
+        addition of path to urls.py file inside the application that is Registration folder. The code to be added
+        file is shown in the following table
+    <br>
+    <br>    
+      <table style="margin-left: 340px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;url.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    app_name = 'Registration'
+
+    urlpatterns = [    
+        path('',views.home, name='home'),
+        path('registration', views.insert, name='insert')   
+    ]
+  
+                       </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+<p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%; " 
+    class="highlight-html+django notranslate"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One more code that we need to add is the
+        following code in layout.html file. Note that col-sm-10 div element should fit along with col-sm-2 so that
+        it totals to 12.
+    <br>
+    <br>    
+      <table style="margin-left: 280px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;layout.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt; div class="col-sm-10 container body-content" &gt;                   
+        {{##}% block content %}
+                    
+        {{##}% endblock %}           
+    &lt; /div &gt;
+  
+                       </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+     <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        After running the code that we have discussed so far new table is created with the columns shown below
+        <br>
+        <br>
+        <table border="solid-black">
+        <tr>            
+            <th>Name</th>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+            <th>Column4</th>
+            <th>Column5</th>
+            <th>Column6</th>
+            <th>Column7</th>
+            <th>Column8</th>
+            <th>Column9</th>
+            <th>Column10</th>
+            <th>Column11</th>
+            <th>Column12</th>
+            <th>Column13</th>
+        </tr>
+        <tr>            
+            <td>Registration_person_info</td>
+            <td>id</td>
+            <td>academic_year</td>
+            <td>course</td>
+            <td>group</td>
+            <td>arcadian</td>
+            <td>fname</td>
+            <td>mname</td>
+            <td>lname</td>
+            <td>mother_name</td>
+            <td>inst_code</td>
+            <td>mobile</td>
+            <td>whatsapp</td>
+            <td>email</td>
+        </tr>
+         </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        Now if we click the button on navbar with text Register on it the fields corresponding to selected 
+        role are added to inner portion of layout. User is expected to fill all fileds in the textboxes added
+        to the form and click submit button at the bottom of the form. For button to display at bottom and 
+        values entered by user to be saved in database table we have to add following code to data_fields.html
+        file. One more piece of javascript code that is needed to automatically add the values of some of the
+        data entry points that user have already entered.
+        <br>
+        <br>
+        
+           
+      <table style="margin-left: 80px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;data_fiels.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;script&gt;
+        window.addEventListener("load", afterLoaded,false);
+        function afterLoaded(){
+            document.getElementById("id_academic_year").value = localStorage.getItem('txt1');
+            document.getElementById("id_course").value = localStorage.getItem('txt2');
+            document.getElementById("id_group").value = localStorage.getItem('txt4');        
+        } 
+    &lt;/script&gt;
+
+
+    &lt;form method="post" action="/signup" &gt;
+        {{##}% csrf_token %}
+        &lt;br&gt;
+        &lt;input type="submit" class="mybutton" href="{&nbsp;% url 'Registration:person_data_save' %}" 
+        style="padding-top:5px; margin-right:50px; height:40px; width:120px; float: right;" &gt;
+        &lt;br&gt;
+        &lt;br&gt;
+    &lt;/form&gt;
+                       </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        For data entered by user to be saved in a table we have to add following code to views.py file. Further
+        we have prepair signup.html page. Onces the signup page is ready we are ready to click submit button.
+        Note the auth_user table referance in views.py file, this in turn expects auth_user be imported from 
+        forms.py file. The code for importing auth_user is shown in the beginning.
+        <br>
+        <br>           
+      <table style="margin-left: 130px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;views.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    from .forms import person_info_form, auth_user
+
+    def person_data_save(request):    
+        if request.method == 'POST':
+            form = person_info_form(request.POST)
+            if form.is_valid():
+                form.save()
+            form = auth_user(request.POST)
+        return render(request, 'Registration/signup.html' , context={'form':form } )    
+                       </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        Some code needs to be added to form.py file which is shown in the following file
+        <br>
+        <br>  
+         <table style="margin-left: 90px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;forms.py file
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    from django.contrib.auth.forms import UserCreationForm
+    from django.contrib.auth.models import User
+
+    class auth_user(UserCreationForm):
+        class Meta:
+            model = User
+            fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        Following code is to be added to signup.html file. Finally we have to add path to corresponding to 
+        signup page and url as shown below
+        <br>
+        <br>           
+      <table style="margin-left: 220px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;signup.html.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    {{##}% extends "registration/layout.html" %}
+ 
+    {{##}% block content %}
+        &lt;div class="container"&gt;
+        &lt;table class="table table-bordered" style="border: 2px solid blue;"&gt;
+            &lt;h4 &gt;{&nbsp;{role_info.dept_token}} login&lt;/h4&gt;
+            &lt;tr&gt;
+                 &lt;td class="td1"&gt;{&nbsp;{form.first_name.label_tag}}&lt;/td&gt;
+                 &lt;td class="td2"&gt;{&nbsp;{form.first_name}}&lt;/td&gt;            
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="td1"&gt;{&nbsp;{form.last_name.label_tag}}&lt;/td&gt;
+                 &lt;td class="td2"&gt;{&nbsp;{form.last_name}}&lt;/td&gt; 
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="td1"&gt;{&nbsp;{form.email.label_tag}}&lt;/td&gt;
+                &lt;td class="td2"&gt;{&nbsp;{form.email}}&lt;/td&gt; 
+            
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="td1"&gt;{&nbsp;{form.username.label_tag}}&lt;/td&gt;
+                &lt;td class="td2"&gt;{&nbsp;{form.username}}&lt;/td&gt;             
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="td1"&gt;{&nbsp;{form.password1.label_tag}}&lt;/td&gt;
+                &lt;td class="td2"&gt;{&nbsp;{form.password1}}&lt;/td&gt;   
+            &lt;/tr&gt; 
+            &lt;tr&gt;
+                &lt;td class="td1"&gt;{&nbsp;{form.password2.label_tag}}&lt;/td&gt;
+                &lt;td class="td2"&gt;{&nbsp;{form.password2}}&lt;/td&gt;               
+            &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;/div&gt;
+    {{##}% endblock %}
+
+    path('signup', views.person_data_save, name='person_data_save'),
+                       </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+     <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        Following code is to be added to signup.html file. Finally we have to add form tags and input button 
+        to corresponding signup page as shown below.
+        <br>
+        <br>           
+      <table style="margin-left: 40px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;signup.html.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    &lt;form method="POST"  action="/user"&gt;
+        {&nbsp;% csrf_token %}
+        &lt;input type="submit" class="mybutton" href="{&nbsp;% url 'Registration:create_user' %}" onclick="loggedIn()" 
+        style="padding-top:5px; margin-right:50px; height:40px; width:120px; float: right;" value="signup"&gt;
+    &lt;/form&gt;
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        Further we have to add function create_user to views.py function. This function is shown in the following
+        table. This function have html template logout.html, so we have to create one such html file.
+        <br>
+        <br>           
+      <table style="margin-left: 200px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;views.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    def create_user(request):   
+        if request.method == 'POST':               
+            username = request.POST['username']
+            email = request.POST['email']
+            password1 = request.POST['password1']
+            password2 = request.POST['password2']
+            if password1 == password2:
+                myuser = User.objects.create_user(username, email, password1)
+                myuser.first_name =  request.POST['fname']
+                myuser.last_name = request.POST['lname']
+                myuser.save()         
+        return render(request,'Registration/logout.html' )
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        We have to add a single line of code to urls.py file
+        <br>
+        <br>           
+      <table style="margin-left: 300px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;urls.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    path('user',views.create_user, name='create_user')
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        Now when user is created we have to make the arrangment to sign him in by using following code 
+        in data_fields.html file
+        <br>
+        <br>           
+      <table style="margin-left: 50px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;data_fields.html
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    {&nbsp;% elif role_info.action_text == 'Login' %}
+    &lt;form method="post" action="/login" &gt;
+        {&nbsp;% csrf_token %}
+        &lt;table class="table table-bordered" style="border: 2px solid blue;"&gt;
+            &lt;h4 &gt;{&nbsp;{role_info.dept_token}} login&lt;/h4&gt;
+            &lt;tr&gt;
+                &lt;td class="td1"&gt;{&nbsp;{form.username.label_tag}}&lt;/td&gt;
+                &lt;td class="td2"&gt;{&nbsp;{form.username}}&lt;/td&gt;             
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="td1"&gt;{&nbsp;{form.password1.label_tag}}&lt;/td&gt;
+                &lt;td class="td2"&gt;{&nbsp;{form.password1}}&lt;/td&gt;   
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;input type="submit" class="mybutton" href="{&nbsp;% url 'Registration:login_user' %}" 
+    style="padding-top:5px; margin-right:50px; height:40px; width:120px; float: right;" value="login"&gt;        
+    &lt;/form>        
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        We have to make few changes to insert function of views.py
+        file.
+        <br>
+        <br>           
+      <table style="margin-left: 140px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;views.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    def insert (request):
+        course = request.POST['course']
+        dept_token = request.POST['dept_token']
+        action_text = request.POST['action_text']
+        if action_text == 'Register':        
+            role_info = {'course':course, 'dept_token': dept_token, 'action_text': action_text} 
+            form = person_info_form()
+            return render(request, 'Registration/data_fields.html', 
+                          context={'form':form , 'role_info':role_info})
+        elif action_text == 'Login':
+            form = auth_user()
+            return render(request, 'Registration/signin.html', context={'form':form })    
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+    <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        For the code corresponding to signin.html to work we have to add function login_user to views.py 
+        file as shown in the following table. Note imported Q and statement at the beginning of views.py
+        file.
+        <br>
+        <br>           
+      <table style="margin-left: 140px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;views.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    from django.db.models import Q
+
+    def login_user(request):    
+        if request.method == 'POST':        
+            username = request.POST['username']
+            password1 = request.POST['password1']        
+            user = authenticate(username = username, password = password1)            
+            if user is not None:
+                f_name = user.first_name
+                l_name = user.last_name
+                login(request, user)
+                current_prsn = person_info.objects.get(Q(fname = f_name) & Q(lname = l_name))
+                print(current_prsn)
+            elif user is None:
+                print('user id password do not match')
+        return render(request, 'Registration/logout.html')    
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+     <p style="font-size: 24px; text-align: center; text-align: justify; margin-left: 3%; margin-right: 3%;">    
+        We have to add a single line of code to urls.py file
+        <br>
+        <br>           
+      <table style="margin-left: 300px; width: 40%; font-size: 20px; border: solid; border-color: blue;">
+            <tr>
+                <th style="font-weight: bold; color: darkblue; background-color: rgb(193, 193, 214); height: 40px;">
+                    &nbsp;urls.py
+                </th>                                        
+            </tr>
+            <tr>
+                <td>
+                    <pre >
+                        <code>
+    path('login',views.login_user, name='login_user'),
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table> 
+    </p>
+
+    

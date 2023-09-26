@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widtd=device-width, initial-scale=1.0">
+    <script src="{% static 'main_layout.js' %}"></script>      
+    <link rel="stylesheet" href="{% static 'Registration/master.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">       
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <title>Document</title>    
+</head>
+<body onload="onpage_load()">
+    <form  method="POST" action="/registration" >
+        {% csrf_token %}    
+        <div class="row" >
+            <nav class="navbar navbar-expand-lg" style="background-color: rgb(32, 32, 163);">
+                <div class="container-fluid">
+                    <a class="navbar-brand" style="padding-left:25px;" href="#">
+                        <img src= "https://media.geeksforgeeks.org/auth/profile/8ceu3jpotjla4m5wpbm7" alt="" width="30" height="30">
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" style="color:white;  padding-left:10px; padding-right:10px;" href="/">YSPM's YTC</a>
+                            </li>
+                            <li class="nav-item" style="padding-top:2px;" >
+                                <input id="textarea1" type="text" style="width:100px" class="navbar-text mytextarea" placeholder="Acadamic Year" >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" style="color:white; padding-left:30px; padding-right:10px;" href="#">Department</a>
+                            </li>
+                            <li class="nav-item" style="padding-top:2px;" >
+                                <input id="textarea2" type="text" style="width:145px" class="navbar-text mytextarea" placeholder="Department Selection" >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" style="color:white; padding-left:30px; padding-right:10px;" href="#">Class</a>
+                            </li>
+                            <li class="nav-item" style="padding-top:2px;" >
+                                <input id="textarea3" type="text" style="width:125px" class="navbar-text mytextarea" placeholder="Class Selection" >
+                            </li> 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" type="text" form="systemForm" style="color:white;padding-left:40px;padding-right:10px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Role
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" onclick="set_button_text()">
+                                    <li><a id="item30" onclick="Person_selection('item30')" class="dropdown-item" href="#">Management</a></li>                    
+                                    <li><a id="item31" onclick="Person_selection('item31')" class="dropdown-item" href="#">Faculty</a></li>
+                                    <li><a id="item32" onclick="Person_selection('item32')" class="dropdown-item" href="#">Staff</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a id="item33" onclick="Person_selection('item33')" class="dropdown-item" href="#">Student</a></li>
+                                    <li><a id="item34" onclick="Person_selection('item34')" class="dropdown-item" href="#">Parent</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item" style="padding-top:2px;" >
+                                <input id="textarea4" type="text" style="width:130px" class="navbar-text mytextarea" placeholder="Faculty Selection"  >
+                            </li>
+                             <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" type="text" form="systemForm" style="color:white;padding-left:40px;padding-right:10px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    User
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" onclick="set_button_text()">
+                                    <li><a id="item40" onclick="User_status('item40')" class="dropdown-item" href="#">New User</a></li>                    
+                                    <li><a id="item41" onclick="User_status('item41')" class="dropdown-item" href="#">Earlier User</a></li>                                   
+                                </ul>
+                            </li>
+                             <li class="nav-item" style="padding-top:2px;" >                                
+                                <input id="textarea5" type="text" style="width:120px" class="navbar-text mytextarea" placeholder="User Status"  >
+                            </li>                           
+                            <li class="accordion-item border-bottom-0" style="padding-left:40px;padding-right:10px;">                   
+                                <input type="hidden" name="course" id="course" style="width:100px" />
+                                <input type="hidden" name="dept_token" id="dept_token" style="width:100px" />
+                                <input type="submit" name="action_text" id="action_text" value=""  href="{% url 'Registration:insert' %}" class="mybutton" onclick="fresh_start()" style="width:100px;height:38px; padding-top:5px;" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>                  
+    </form>
+        <div class="row">
+            <div class="col-sm-2" style="background-color:aliceblue;" >
+                <ul class="accordion accordion-flush list-unstyled"  id="accordionFlushExample">
+                    {% for x,q in lovar1.items %}
+                        <li class="accordion-item border-bottom-0">
+                            <h2 class="accordion-header" id=flush-headingOne>
+                                <button  class="mybutton" type="button" data-bs-toggle="collapse"  aria-expanded="false" >
+                                    {{x}}
+                                </button>
+                            </h2>
+                            {% if x == 'Academic Year' %}                                
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby=flush-headingOne data-bs-parent="#accordionFlushExample">
+                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
+                                        {% for y in lovar2 %}
+                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
+                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
+                                                {{y}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>                                
+                            {% elif x == 'Institution' %}                                
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
+                                        {% for z in lovar3 %}
+                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
+                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
+                                                {{z}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>                                
+                            {% elif x == 'General Science' %}                                
+                                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
+                                        {% for l in lovar4 %}
+                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
+                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
+                                                {{l}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>                                
+                            {% elif x == 'Mechanical' or x == 'Electrical' or x == 'Civil' or x == 'Computer' or x == 'E&TC'  %}
+                                
+                                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
+                                        {% for m in lovar5 %}
+                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
+                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
+                                                {{m}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>                                
+                            {% elif x == 'Polytechnic' %}                                
+                                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
+                                        {% for n in lovar6 %}
+                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
+                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
+                                                {{n}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>                                 
+                            {% elif x == 'Mechanical Poly' or x == 'Electrical Poly' or x == 'Civil Poly' %}
+                                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
+                                        {% for p in lovar7 %}
+                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
+                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
+                                                {{p}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>                                                              
+                            {% endif %}  
+                        </li>                        
+                    {% endfor %} 
+                </ul>
+            </div>
+            <div class="col-sm-10 container body-content">
+                {% block content %}
+
+                {% endblock %}           
+            </div>
+        </div>
+               
+</body>
+</html>
