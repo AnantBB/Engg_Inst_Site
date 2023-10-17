@@ -80,90 +80,183 @@
     </form>
         <div class="row">
             <div class="col-sm-2" style="background-color:aliceblue;" >
-                <ul class="accordion accordion-flush list-unstyled"  id="accordionFlushExample">
-                    {% for x,q in lovar1.items %}
-                        <li class="accordion-item border-bottom-0">
-                            <h2 class="accordion-header" id=flush-headingOne>
-                                <button  class="mybutton" type="button" data-bs-toggle="collapse"  aria-expanded="false" >
-                                    {{x}}
-                                </button>
-                            </h2>
-                            {% if x == 'Academic Year' %}                                
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby=flush-headingOne data-bs-parent="#accordionFlushExample">
-                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
-                                        {% for y in lovar2 %}
-                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
-                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
-                                                {{y}}
-                                            </a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>                                
-                            {% elif x == 'Institution' %}                                
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
-                                        {% for z in lovar3 %}
-                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
-                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
-                                                {{z}}
-                                            </a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>                                
-                            {% elif x == 'General Science' %}                                
-                                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
-                                        {% for l in lovar4 %}
-                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
-                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
-                                                {{l}}
-                                            </a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>                                
-                            {% elif x == 'Mechanical' or x == 'Electrical' or x == 'Civil' or x == 'Computer' or x == 'E&TC'  %}
-                                
-                                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
-                                        {% for m in lovar5 %}
-                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
-                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
-                                                {{m}}
-                                            </a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>                                
-                            {% elif x == 'Polytechnic' %}                                
-                                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
-                                        {% for n in lovar6 %}
-                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
-                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
-                                                {{n}}
-                                            </a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>                                 
-                            {% elif x == 'Mechanical Poly' or x == 'Electrical Poly' or x == 'Civil Poly' %}
-                                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                                    <ul class="dropdown-body list-unstyled" style="text-align: center">
-                                        {% for p in lovar7 %}
-                                        <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'">
-                                            <a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">
-                                                {{p}}
-                                            </a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>                                                              
-                            {% endif %}  
-                        </li>                        
-                    {% endfor %} 
+                <ul class="accordion accordion-flush list-unstyled"  id="accordionFlushExample">                                      
+                    <li class="accordion-item border-bottom-0" >
+                        <h2 class="accordion-header" id="flush-headingTwelve">
+                            <button  id="button0"  class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseFive" >
+                            Academic Year
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwelve" class="accordion-collapse collapse" aria-labelledby="flush-headingTwelve" data-bs-parent="#accordionFlushExample">
+                            <ul class="dropdown-body list-unstyled" style="text-align: center">
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item35" onclick="year_selection('item35')" class="dropdown-item" href="#">2019-20</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item36" onclick="year_selection('item36')" class="dropdown-item" href="#">2020-21</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item37" onclick="year_selection('item37')" class="dropdown-item" href="#">2021-22</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item38" onclick="year_selection('item38')" class="dropdown-item" href="#">2022-23</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item39" onclick="year_selection('item39')" class="dropdown-item" href="#">2023-24</a></li>
+                            </ul>
+                        </div>
+                    </li>                                
+                    <li class="accordion-item border-bottom-0">                    
+                        <h5  id="flush-headingOne" style=" font-size:18px;margin-top: 10px;border-style: solid; border-width:2px; border-color:rgb(8, 8, 246); padding: 3px;border-radius: 10px;background-color: rgba(88, 208, 208, 0.264);">
+                            &nbsp;&nbsp;Department Selection                       
+                        </h5>                                       
+                    </li>
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingEleven">
+                        <button id="button11" onclick="branch_selection('button11')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseFive">
+                            Institution
+                        </button>
+                        </h2>
+                        <div id="flush-collapseEleven" class="accordion-collapse collapse" aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item42" onclick="class_selection('item42')" class="dropdown-item" href="#">Office</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item43" onclick="class_selection('item43')" class="dropdown-item" href="#">Lab assistant</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item44" onclick="class_selection('item44')" class="dropdown-item" href="#">Library</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item45" onclick="class_selection('item45')" class="dropdown-item" href="#">Examination</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item46" onclick="class_selection('item46')" class="dropdown-item" href="#">Sports</a></li>
+                            </ul>
+                        </div>
+                    </li> 
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button id="button1" onclick="branch_selection('button1')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseFive" >
+                            General Science
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">            
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item1" onclick="class_selection('item1')" class="dropdown-item" href="#">Machanical</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item2" onclick="class_selection('item2')" class="dropdown-item" href="#">Electrical</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item3" onclick="class_selection('item3')" class="dropdown-item" href="#">Civil</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item4" onclick="class_selection('item4')" class="dropdown-item" href="#">Computer</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item5" onclick="class_selection('item5')" class="dropdown-item" href="#">E&TC</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button id="button2" onclick="branch_selection('button2')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Mechanical
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item6" onclick="class_selection('item6')" class="dropdown-item" href="#">Second Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item7" onclick="class_selection('item7')" class="dropdown-item" href="#">Third Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item8" onclick="class_selection('item8')" class="dropdown-item" href="#">Final Year</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <button id="button3" onclick="branch_selection('button3')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Electrical
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item9" onclick="class_selection('item9')" class="dropdown-item" href="#">Second Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item10" onclick="class_selection('item10')" class="dropdown-item" href="#">Third Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item11" onclick="class_selection('item11')" class="dropdown-item" href="#">Final Year</a></li>
+                            </ul>
+                        </div>
+                    </li>  
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingFour">
+                            <button id="button4" onclick="branch_selection('button4')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Civil
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item12" onclick="class_selection('item12')" class="dropdown-item" href="#">Second Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item13" onclick="class_selection('item13')" class="dropdown-item" href="#">Third Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item14" onclick="class_selection('item14')" class="dropdown-item" href="#">Final Year</a></li>
+                            </ul>
+                        </div>
+                    </li> 
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingFive">
+                            <button id="button5" onclick="branch_selection('button5')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Computer
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item15" onclick="class_selection('item15')" class="dropdown-item" href="#">Second Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item16" onclick="class_selection('item16')" class="dropdown-item" href="#">Third Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item17" onclick="class_selection('item17')" class="dropdown-item" href="#">Final Year</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingSix">
+                            <button id="button6" onclick="branch_selection('button6')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseThree">
+                                E&ampTC
+                            </button>
+                        </h2>
+                        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item18" onclick="class_selection('item18')" class="dropdown-item" href="#">Second Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item19" onclick="class_selection('item19')" class="dropdown-item" href="#">Third Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item20" onclick="class_selection('item20')" class="dropdown-item" href="#">Final Year</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingSeven">
+                            <button id="button7" onclick="branch_selection('button7')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Polytechnic
+                            </button>
+                        </h2>
+                        <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item21" onclick="class_selection('item21')" class="dropdown-item" href="#">Mechanical</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item22" onclick="class_selection('item22')" class="dropdown-item" href="#">Electrical</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item23" onclick="class_selection('item23')" class="dropdown-item" href="#">Civil</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingEight">
+                            <button id="button8" onclick="branch_selection('button8')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Mechanical Poly
+                            </button>
+                        </h2>
+                        <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item24" onclick="class_selection('item24')" class="dropdown-item" href="#">Second Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item25" onclick="class_selection('item25')" class="dropdown-item" href="#">Third Year</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingNine">
+                            <button id="button9" onclick="branch_selection('button9')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Electrical Poly
+                            </button>
+                        </h2>
+                        <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item26" onclick="class_selection('item26')" class="dropdown-item" href="#">Second Year</a></li>
+                            <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item27" onclick="class_selection('item27')" class="dropdown-item" href="#">Third Year</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="accordion-item border-bottom-0">
+                        <h2 class="accordion-header" id="flush-headingTen">
+                        <button id="button10" onclick="branch_selection('button10')" class="mybutton" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Civil Poly
+                        </button>
+                        </h2>
+                        <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+                            <ul class="accordion-body list-unstyled">
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item28" onclick="class_selection('item28')" class="dropdown-item" href="#">Second Year</a></li>
+                                <li onmouseover="this.style.background='#B8B5FF'" onmouseout="this.style.background='white'"><a id="item29" onclick="class_selection('item29')" class="dropdown-item" href="#">Third Year</a></li>
+                            </ul>
+                        </div>                    
+                    </li>                                     
                 </ul>
             </div>
             <div class="col-sm-10 container body-content">
@@ -171,7 +264,6 @@
 
                 {% endblock %}           
             </div>
-        </div>
-               
+        </div>               
 </body>
 </html>
